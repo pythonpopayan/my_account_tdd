@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>my_account</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">register</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8000/<datalist><option>http://localhost:8000/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Register<datalist><option>link=Register</option><option>//a[contains(text(),'Register')]</option><option>//div[@id='menu']/div/ul/li[2]/a</option><option>//a[contains(@href, '/signup/')]</option><option>//li[2]/a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>//input[@id='id_username']</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>//input[@id='id_username']</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td>josefina</td>
+</tr>
+<tr><td>click</td><td>id=id_password1<datalist><option>id=id_password1</option><option>name=password1</option><option>//input[@id='id_password1']</option><option>//p[2]/input</option><option>css=#id_password1</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_password1<datalist><option>id=id_password1</option><option>name=password1</option><option>//input[@id='id_password1']</option><option>//p[2]/input</option><option>css=#id_password1</option></datalist></td><td>python2018</td>
+</tr>
+<tr><td>click</td><td>id=id_password2<datalist><option>id=id_password2</option><option>name=password2</option><option>//input[@id='id_password2']</option><option>//p[4]/input</option><option>css=#id_password2</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_password2<datalist><option>id=id_password2</option><option>name=password2</option><option>//input[@id='id_password2']</option><option>//p[4]/input</option><option>css=#id_password2</option></datalist></td><td>python2018</td>
+</tr>
+<tr><td>click</td><td>//button[@type='submit']<datalist><option>//button[@type='submit']</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">create_transaction</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8000/<datalist><option>http://localhost:8000/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>//input[@id='id_username']</option><option>//div[@id='main']/div[2]/div/div/form/p/input</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>//input[@id='id_username']</option><option>//div[@id='main']/div[2]/div/div/form/p/input</option><option>//p/input</option><option>css=#id_username</option></datalist></td><td>josefina</td>
+</tr>
+<tr><td>click</td><td>id=id_password<datalist><option>id=id_password</option><option>name=password</option><option>//input[@id='id_password']</option><option>//div[@id='main']/div[2]/div/div/form/p[2]/input</option><option>//p[2]/input</option><option>css=#id_password</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_password<datalist><option>id=id_password</option><option>name=password</option><option>//input[@id='id_password']</option><option>//div[@id='main']/div[2]/div/div/form/p[2]/input</option><option>//p[2]/input</option><option>css=#id_password</option></datalist></td><td>python2018</td>
+</tr>
+<tr><td>click</td><td>//button[@type='submit']<datalist><option>//button[@type='submit']</option><option>//div[@id='main']/div[2]/div/div/form/button</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=id_value<datalist><option>id=id_value</option><option>name=value</option><option>//input[@id='id_value']</option><option>//div[@id='main']/div[2]/div/div/form/p/input</option><option>//p/input</option><option>css=#id_value</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=id_value<datalist><option>id=id_value</option><option>name=value</option><option>//input[@id='id_value']</option><option>//div[@id='main']/div[2]/div/div/form/p/input</option><option>//p/input</option><option>css=#id_value</option></datalist></td><td>1000000</td>
+</tr>
+<tr><td>click</td><td>id=id_category<datalist><option>id=id_category</option><option>name=category</option><option>//select[@id='id_category']</option><option>//div[@id='main']/div[2]/div/div/form/p[2]/select</option><option>//select</option><option>css=#id_category</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=id_category<datalist><option>id=id_category</option><option>name=category</option><option>//select[@id='id_category']</option><option>//div[@id='main']/div[2]/div/div/form/p[2]/select</option><option>//select</option><option>css=#id_category</option></datalist></td><td>label=investments</td>
+</tr>
+<tr><td>click</td><td>//option[@value='1']<datalist><option>//option[@value='1']</option><option>//select[@id='id_category']/option[2]</option><option>//option[2]</option><option>css=option[value="1"]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=id_description<datalist><option>id=id_description</option><option>name=description</option><option>//textarea[@id='id_description']</option><option>//div[@id='main']/div[2]/div/div/form/p[3]/textarea</option><option>//textarea</option><option>css=#id_description</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//button[@type='submit']<datalist><option>//button[@type='submit']</option><option>//div[@id='main']/div[2]/div/div/form/button</option><option>//button</option><option>css=button[type="submit"]</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% extends '_base.html' %}
+
+{% load staticfiles %}
+{% load static %}
+{% load i18n %}
+
+{% block title_block %}Login{% endblock %}
+
+
+
+{% block content %}
+
+
+<div id="app">
+
+
+<div id="layout" class="" v-bind:class="panel_state">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link" v-bind:class="panel_state" v-on:click='tooglePanel'>
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu" class="" v-bind:class="panel_state">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="#">my_account</a>
+
+            <ul class="pure-menu-list">
+              {% if user.is_authenticated %}
+              <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'logout' %}">Logout</a></li>
+              <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'dashboard' %}">My Account</a></li>
+                <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'new-transaction' %}">New Transaction</a></li>
+                {% else %}
+                <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'login' %}">Login</a></li>
+                <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'signup' %}">Register</a></li>
+                {% endif %}
+                <li class="pure-menu-item menu-item-divided pure-menu-selected">
+                    <a href="#" class="pure-menu-link">Services</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="main" class="" v-bind:class="panel_state">
+        <div class="header">
+            <h2>Login</h2>
+        </div>
+        <div class="content is-center">
+            <div class="pure-g">
+                <div class="pure-u-1">
+                    <form method="post">
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block final_scripts %}
+  <script type="text/javascript" src='{% static "js/inner_app.js" %}'></script>
+{% endblock %}

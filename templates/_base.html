@@ -1,0 +1,46 @@
+{% load staticfiles %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta_detail %}
+
+    {% endblock %}
+    <title>{% block title_block %}{% endblock %}</title>
+
+    <link rel="stylesheet" href='{% static "vendor/pure/pure-min.css" %}'>
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href='{% static "vendor/pure/grids-responsive-old-ie-min.css" %}'">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href='{% static "vendor/pure/grids-responsive-min.css" %}'>
+    <!--<![endif]-->
+    <script type="text/javascript" src='{% static "vendor/vue/vue.min.js" %}'></script>
+
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href='{% static "css/side-menu-old-ie.css" %}'>
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href='{% static "css/side-menu.css" %}'>
+        <!--<![endif]-->
+        {% block custom_styles %}
+
+        {% endblock %}
+        {% block initial_scripts %}
+
+        {% endblock %}
+</head>
+<body>
+
+{% block content %}
+
+{% endblock %}
+
+{% block final_scripts %}
+
+{% endblock %}
+</body>
+</html>
