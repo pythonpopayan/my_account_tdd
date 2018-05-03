@@ -31,7 +31,7 @@ DEBUG = secrets['DEBUG']
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['ppsirg.pythonanywhere.com']
+    ALLOWED_HOSTS = ['127.0.0.1', 'emdyp.pythonanywhere.com']
 
 HTML_MINIFY = True
 

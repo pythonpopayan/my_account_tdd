@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect
 
 from persons.models import owner
 from accounts.models import account, transaction
-from accounts.utils import calculate_balance
+from accounts.utils import calculate_balance_report
 
 
 @method_decorator(login_required, name='dispatch')
@@ -24,7 +24,7 @@ class dashboardTemplateView(TemplateView):
         context['owner'] = owner.objects.get(user=request.user)
         print(context['owner'], type(context['owner']))
         context['account'] = account.objects.get(owner=context['owner'])
-        context['balance'] = calculate_balance(context['account'])
+        context['balance_report'] = calculate_balance_report(context['account'])
         # context['transactions'] = transaction.objects.filter(account=context['account'])
         return self.render_to_response(context)
 

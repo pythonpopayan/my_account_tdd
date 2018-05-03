@@ -22,16 +22,13 @@
 
             <ul class="pure-menu-list">
               {% if user.is_authenticated %}
+              <li class="pure-menu-item pure-menu-selected"><a class="pure-menu-link" href="{% url 'new-transaction' %}">New</a></li>
+              <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'dashboard' %}">Balance</a></li>
               <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'logout' %}">Logout</a></li>
-              <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'dashboard' %}">My Account</a></li>
-                <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'new-transaction' %}">New Transaction</a></li>
                 {% else %}
                 <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'login' %}">Login</a></li>
                 <li class="pure-menu-item"><a class="pure-menu-link" href="{% url 'signup' %}">Register</a></li>
                 {% endif %}
-                <li class="pure-menu-item menu-item-divided pure-menu-selected">
-                    <a href="#" class="pure-menu-link">Services</a>
-                </li>
 
             </ul>
         </div>
@@ -46,7 +43,12 @@
                 <div class="pure-u-1">
                   <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="pure-u-1"><label for="{{ form.value.id_for_label }}">Value:</label></div>
+                    <div class="pure-u-1">{{ form.value }}</div>
+                    <div class="pure-u-1"><label for="{{ form.category.id_for_label }}">Category:</label></div>
+                    <div class="pure-u-1">{{ form.category }}</div>
+                    <div class="pure-u-1"><label for="{{ form.description.id_for_label }}">Description:</label></div>
+                    <div class="pure-u-1">{{ form.description }}</div>
                     <button type="submit">send</button>
                   </form>
                 </div>
@@ -62,4 +64,10 @@
 
 {% block final_scripts %}
   <script type="text/javascript" src='{% static "js/inner_app.js" %}'></script>
+  <style media="screen">
+    #id_description{
+      height: 4em;
+      max-width: 95%;
+    }
+  </style>
 {% endblock %}
