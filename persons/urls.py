@@ -18,4 +18,8 @@ from persons import views as persons_views
 
 urlpatterns = [
     path('dashboard/', persons_views.dashboardTemplateView.as_view(), name='dashboard'),
+    path('detail/<slug:category>/', persons_views.detailTemplateView.as_view(), name='detail'),
+    # path('settings/', persons_views.settingsTemplateView.as_view(), name='settings'),
+    # path('dump-balance/', persons_views.dumpBalanceTemplateView.as_view(), name='dump-balance'),
+
 ]

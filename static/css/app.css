@@ -1,11 +1,3 @@
-.exercise_detail_container {
-  background-color: #h3h3h3;
-}
-.img_placeholder {
-  width: 100%;
-  height: 200px;
-  background-color: cyan;
-}
-.exercise_detail_name {
-  font-weight: bold;
+.detail-link:visited, .detail-link {
+  color: #FF3B3B;
 }

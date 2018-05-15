@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from persons.models import owner
-from accounts.models import account, transaction
+from accounts.models import account, transaction, transactionCategory
 from accounts.utils import calculate_balance_report
 
 
@@ -20,9 +20,57 @@ class dashboardTemplateView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        print(request.user, type(request.user))
         context['owner'] = owner.objects.get(user=request.user)
-        print(context['owner'], type(context['owner']))
+        context['account'] = account.objects.get(owner=context['owner'])
+        context['balance_report'] = calculate_balance_report(context['account'])
+        return self.render_to_response(context)
+
+@method_decorator(login_required, name='dispatch')
+class detailTemplateView(TemplateView):
+    http_method_names = ['get']
+    template_name = 'detail.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['owner'] = owner.objects.get(user=request.user)
+        context['account'] = account.objects.get(owner=context['owner'])
+        balance_report = calculate_balance_report(context['account'])
+        if kwargs['category'] == 'outcome':
+            outcome_categories = transactionCategory.objects.filter(income=False)
+            transactions = transaction.objects.filter(
+            account=context['account'],
+            category__in=outcome_categories
+            )
+            total = balance_report['expenses']
+            label = 'outcomes'
+        elif kwargs['category'] == 'income':
+            income_categories = transactionCategory.objects.filter(income=True)
+            transactions = transaction.objects.filter(
+            account=context['account'],
+            category__in=income_categories
+            )
+            total = balance_report['incomes']
+            label = 'incomes'
+        else:
+            transactions = transaction.objects.filter(
+            account=context['account'],
+            )
+            total = balance_report['balance']
+            label = 'balance'
+        context['transaction_list'] = transactions
+        context['category_label'] = label
+        context['category_total'] = total
+        return self.render_to_response(context)
+
+
+@method_decorator(login_required, name='dispatch')
+class settingsTemplateView(TemplateView):
+    http_method_names = ['get']
+    template_name = 'settings.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['owner'] = owner.objects.get(user=request.user)
         context['account'] = account.objects.get(owner=context['owner'])
         context['balance_report'] = calculate_balance_report(context['account'])
         # context['transactions'] = transaction.objects.filter(account=context['account'])

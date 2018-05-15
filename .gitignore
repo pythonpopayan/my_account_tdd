@@ -4,6 +4,7 @@
 #custom
 burn_migrations.py
 */secrets.yaml
+credentials.yaml
 */initial_data.yaml
 */migrations/*
 !*/migrations/__init__.py
