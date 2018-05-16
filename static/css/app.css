@@ -1,3 +1,16 @@
 .detail-link:visited, .detail-link {
-  color: #FF3B3B;
+  color: #00513F;
+}
+.tx_category a {
+  color: #001E17;
+  text-decoration: none;
+}
+.tx_value {
+  color: #0F7B63;
+}
+.tx_date {
+  color: #777;
+}
+.tx_upper_line {
+  border-bottom: 1px solid #ccc;
 }
