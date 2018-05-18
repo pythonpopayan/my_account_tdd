@@ -40,7 +40,7 @@ class detailTemplateView(TemplateView):
             transactions = transaction.objects.filter(
             account=context['account'],
             category__in=outcome_categories
-            )
+            ).order_by('-date')
             total = balance_report['expenses']
             label = 'outcomes'
         elif kwargs['category'] == 'income':
@@ -48,13 +48,13 @@ class detailTemplateView(TemplateView):
             transactions = transaction.objects.filter(
             account=context['account'],
             category__in=income_categories
-            )
+            ).order_by('-date')
             total = balance_report['incomes']
             label = 'incomes'
         else:
             transactions = transaction.objects.filter(
             account=context['account'],
-            )
+            ).order_by('-date')
             total = balance_report['balance']
             label = 'balance'
         context['transaction_list'] = transactions

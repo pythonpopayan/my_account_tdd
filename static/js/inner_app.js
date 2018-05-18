@@ -21,5 +21,9 @@ methods: {
       this.panel_state = ''
     }
   },
+  tx_accordion: function() {
+      // get id of description picked
+      // toogle description picked
+  },
 }
 })
