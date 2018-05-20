@@ -1,9 +1,11 @@
 .detail-link:visited, .detail-link {
   color: #00513F;
 }
-.tx_category a {
+.tx_category button {
   color: #001E17;
   text-decoration: none;
+  background-color: rgba(255, 0, 0, 0);
+  border: 0px solid rgba(255, 0, 0, 0);
 }
 .tx_value {
   color: #0F7B63;
@@ -13,4 +15,13 @@
 }
 .tx_upper_line {
   border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  width: 100%;
+}
+.hidden_accordion{
+  display: none;
+}
+.visible_accordion{
+  display: block;
 }

@@ -14,6 +14,22 @@
 
 {% block content %}
 
+<script id="detail-item-template" type="text/x-template">
+  <div class="tx_upper_line">
+    <div class="pure-u-1-3 tx_date">
+      [[ detail_date ]]
+    </div>
+    <div class="pure-u-1-3 tx_value">
+      $ [[ detail_value ]]
+    </div>
+    <div class="pure-u-1-3 tx_category">
+      <button v-on:click="view" type="button" name="button">[[ detail_category ]] (...)</button>
+    </div>
+    <div class="pure-u-1" v-bind:class="state">
+        [[ detail_description ]]
+    </div>
+  </div>
+</script>
 
 <div id="app">
 
@@ -55,19 +71,12 @@
               <h2>{{ category_total|floatformat }} COP</h2>
             </div>
             {% for tx in transaction_list %}
-              <div class="pure-u-1-3 tx_date">
-                {{ tx.date|date:"d b" }}
-              </div>
-              <div class="pure-u-1-3 tx_value">
-                $ {{ tx.value|floatformat }}
-              </div>
-              <div class="pure-u-1-3 tx_category">
-                <button type="button" name="button">{{ tx.category }}</button>
-              </div>
-              <div id="description_tx_{{tx.pk}}" class="prue-u-1 tx_description" v-bind:class="panel_state">
-                  {{ tx.description }}
-              </div>
-              <div class="pure-u-1 tx_upper_line"></div>
+            <detail-item
+            detail_date='{{ tx.date|date:"d b" }}'
+            detail_value="{{ tx.value|floatformat }}"
+            detail_category="{{ tx.category }}"
+            detail_description="{{ tx.description }}"
+            ></detail-item>
             {% endfor %}
           </div>
         </div>
@@ -80,5 +89,6 @@
 
 
 {% block final_scripts %}
-  <script type="text/javascript" src='{% static "js/inner_app.js" %}'></script>
+<script type="text/javascript" src='{% static "js/detail_components.js" %}'></script>
+<script type="text/javascript" src='{% static "js/inner_app.js" %}'></script>
 {% endblock %}
