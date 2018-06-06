@@ -3,6 +3,8 @@ from accounts.models import transaction, account
 from persons.models import owner
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 
 @method_decorator(login_required, name='dispatch')
@@ -24,3 +26,8 @@ class transactionCreateView(CreateView):
         user_account = account.objects.filter(owner=self.logged_customer).last()
         form.instance.account = user_account
         return super(transactionCreateView, self).form_valid(form)
+
+@csrf_exempt
+def edit_transactions(request, *args, **kwargs):
+    print(request, args, kwargs)
+    return JsonResponse({'status': 'ok'})

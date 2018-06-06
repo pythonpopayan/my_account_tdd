@@ -18,4 +18,5 @@ from accounts import views as account_views
 
 urlpatterns = [
     path('new-transaction/', account_views.transactionCreateView.as_view(), name='new-transaction'),
+    path('edit-transaction/<int:section>', account_views.edit_transactions, name='edit-transaction')
 ]

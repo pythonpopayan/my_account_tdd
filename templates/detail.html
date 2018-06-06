@@ -14,25 +14,7 @@
 
 {% block content %}
 
-<script id="detail-item-template" type="text/x-template">
-  <div class="tx_upper_line">
-    <div class="pure-u-1-3 tx_date">
-      [[ detail_date ]]
-    </div>
-    <div class="pure-u-1-3 tx_value">
-      $ [[ detail_value ]]
-    </div>
-    <div class="pure-u-1-3 tx_category">
-      <button v-on:click="view" type="button" name="button">[[ detail_category ]] (...)</button>
-    </div>
-    <div class="pure-u-1" v-bind:class="state">
-        [[ detail_description ]]
-    </div>
-  </div>
-</script>
-
 <div id="app">
-
 
 <div id="layout" class="" v-bind:class="panel_state">
     <!-- Menu toggle -->
@@ -72,16 +54,37 @@
             </div>
             {% for tx in transaction_list %}
             <detail-item
+            detail_id='{{ tx.pk }}'
             detail_date='{{ tx.date|date:"d b" }}'
             detail_value="{{ tx.value|floatformat }}"
             detail_category="{{ tx.category }}"
             detail_description="{{ tx.description }}"
+            v-on:display_modal="show_modal"
             ></detail-item>
             {% endfor %}
+
           </div>
         </div>
     </div>
+
+    <div id="die_glucke" class="modal">
+        <div class="modal-content content">
+          <span class="close" v-on:click="close_modal">&times;</span>
+          <div class="pure-g">
+          <label for="tx_value" class="pure-u-1">valor</label>
+          <input id="tx_value" type="text" v-bind:value="form_state.detail_value" class="pure-u-1">
+          <label for="tx_category" class="pure-u-1">categoria</label>
+          <input id="tx_category" type="text" v-bind:value="form_state.detail_category" class="pure-u-1">
+          <label for="tx_description" class="pure-u-1">description</label>
+          <input id="tx_description" type="text" v-bind:value="form_state.detail_description" class="pure-u-1">
+          <button class="pure-u-1">Guardar</button>
+        </div>
+        </div>
+    </div>
+
+
 </div>
+
 </div>
 
 
