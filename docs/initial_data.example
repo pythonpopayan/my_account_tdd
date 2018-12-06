@@ -1,0 +1,13 @@
+ADMIN_ACCOUNTS:
+    -
+        USERNAME: ADMIN
+        PASSWORD: SUPERADMIN2018
+DEFAULT_CATEGORIES:
+    -
+        NAME: ingreso
+        INCOME: true
+        DESCRIPTION: 'ingreso de dinero'
+    -
+        NAME: gasto
+        INCOME: false
+        DESCRIPTION: 'gasto de dinero'
